@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Minimalist personal portfolio — clean, responsive single-page template." />
   <title>Your Name — Portfolio</title>
+  <script src="script.js"> </script>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -237,16 +238,6 @@
     </main>
   </div>
 
-  <script>
-    // small JS: update year, simple keyboard-friendly skip-to-top
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // progressive enhancement: enable keyboard-friendly focus for brand link
-    document.querySelectorAll('a,button,input,textarea').forEach(el => {
-      el.addEventListener('keydown', e => {
-        if(e.key === 'Enter' && el.tagName === 'A') el.click();
-      });
-    });
-  </script>
+  <script src="script1.js"></script>
 </body>
 </html>
