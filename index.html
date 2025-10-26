@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Minimalist personal portfolio — clean, responsive single-page template." />
+  <title>Your Name — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffffff;
+      --card:#f7f7f8;
+      --text:#0f1720;
+      --muted:#6b7280;
+      --accent:#0ea5a4;
+      --radius:12px;
+      --max-width:960px;
+      --gap:24px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color-scheme: light;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b0f12;
+        --card:#071018;
+        --text:#e6eef6;
+        --muted:#94a3b8;
+        --accent:#2dd4bf;
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px 16px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      line-height:1.45;
+    }
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+    }
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:var(--gap);
+      margin-bottom:28px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:inherit;
+    }
+    .logo{
+      width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#60a5fa);
+      display:inline-grid;place-items:center;color:var(--bg);font-weight:700;
+    }
+    nav{display:flex;gap:16px;align-items:center}
+    a.btn{padding:10px 14px;border-radius:10px;text-decoration:none;border:1px solid transparent;font-weight:600}
+    a.primary{background:var(--accent);color:var(--bg)}
+    a.ghost{background:transparent;color:var(--muted)}
+    main{background:transparent}
+
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:40px;
+      align-items:start;
+      margin-bottom:40px;
+    }
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;}
+    }
+    .intro{
+      background:linear-gradient(180deg, transparent, rgba(0,0,0,0.01));
+      padding:24px;
+      border-radius:var(--radius);
+    }
+    h1{font-size:32px;margin:0 0 8px}
+    p.lead{margin:0 0 18px;color:var(--muted)}
+    .meta{display:flex;gap:12px;flex-wrap:wrap}
+    .chip{background:var(--card);padding:8px 12px;border-radius:999px;font-weight:600;color:var(--muted);border:1px solid rgba(0,0,0,0.03)}
+
+    .photo-card{background:var(--card);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;align-items:center;gap:12px;border:1px solid rgba(0,0,0,0.04)}
+    .photo{width:160px;height:160px;border-radius:18px;background:linear-gradient(135deg,#e2e8f0,#f8fafc);display:inline-grid;place-items:center;font-weight:700;color:var(--muted)}
+    .contact{display:flex;gap:8px}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    @media (max-width:680px){.projects{grid-template-columns:1fr}}
+    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(0,0,0,0.04)}
+    .card h3{margin:0 0 8px}
+    .card p{margin:0;color:var(--muted)}
+
+    footer{margin-top:40px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* focus styles */
+    :focus{outline:3px solid rgba(14,165,164,0.14);outline-offset:2px}
+
+    /* small utilities */
+    .muted{color:var(--muted)}
+    .stack{display:flex;gap:12px;flex-wrap:wrap}
+
+    /* minimal animations */
+    @media (prefers-reduced-motion: no-preference){
+      .logo{transition:transform .25s ease}
+      .logo:hover{transform:translateY(-3px)}
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <a class="brand" href="#" aria-label="Go to top">
+        <div class="logo">YC</div>
+        <div>
+          <div style="font-weight:700">Your Name</div>
+          <div class="muted" style="font-size:12px">Designer & Developer</div>
+        </div>
+      </a>
+      <nav aria-label="Primary">
+        <a class="ghost" href="#projects">Projects</a>
+        <a class="ghost" href="#about">About</a>
+        <a class="btn primary" href="mailto:you@example.com?subject=Hello">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="intro-heading">
+        <div class="intro">
+          <h1 id="intro-heading">Hi — I'm Your Name.</h1>
+          <p class="lead">I build simple, thoughtful websites and digital products. I care about clarity, performance, and delightful micro-interactions.</p>
+          <div class="meta">
+            <div class="chip">Based in Thimphu</div>
+            <div class="chip">Open to work</div>
+            <div class="chip">Available for freelance</div>
+          </div>
+
+          <section id="projects" style="margin-top:20px">
+            <h2 style="font-size:18px;margin:0 0 12px">Selected projects</h2>
+            <div class="projects">
+              <article class="card" aria-labelledby="p1">
+                <h3 id="p1">Project One</h3>
+                <p>A short one-sentence description that explains the value and your role.</p>
+                <div style="margin-top:12px" class="stack">
+                  <span class="chip">HTML</span>
+                  <span class="chip">CSS</span>
+                  <span class="chip">Accessibility</span>
+                </div>
+              </article>
+
+              <article class="card" aria-labelledby="p2">
+                <h3 id="p2">Project Two</h3>
+                <p>One clear sentence that highlights impact — e.g., "Reduced load time by 40%".</p>
+                <div style="margin-top:12px" class="stack">
+                  <span class="chip">Design</span>
+                  <span class="chip">React</span>
+                </div>
+              </article>
+
+              <article class="card" aria-labelledby="p3">
+                <h3 id="p3">Project Three</h3>
+                <p>A small project or experiment — link to demo or case study.</p>
+                <div style="margin-top:12px" class="stack">
+                  <span class="chip">Prototype</span>
+                  <span class="chip">Performance</span>
+                </div>
+              </article>
+
+              <article class="card" aria-labelledby="p4">
+                <h3 id="p4">Project Four</h3>
+                <p>Open-source, script, or article — anything that demonstrates craft.</p>
+                <div style="margin-top:12px" class="stack">
+                  <span class="chip">Open Source</span>
+                  <span class="chip">Docs</span>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <aside class="photo-card" aria-label="Profile">
+          <div class="photo" role="img" aria-label="Your photo">YN</div>
+          <div style="text-align:center">
+            <div style="font-weight:700">Your Name</div>
+            <div class="muted" style="font-size:13px">Frontend Engineer</div>
+          </div>
+
+          <div class="contact" style="margin-top:12px">
+            <a class="btn" href="#about">About</a>
+            <a class="btn primary" href="mailto:you@example.com">Email</a>
+          </div>
+
+          <div style="margin-top:12px;font-size:13px;color:var(--muted);text-align:center">Or find me on
+            <div style="margin-top:8px;display:flex;gap:8px;justify-content:center">
+              <a class="ghost" href="#" aria-label="GitHub">GitHub</a>
+              <a class="ghost" href="#" aria-label="LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="about" class="card" style="margin-bottom:24px">
+        <h2 style="margin-top:0">About</h2>
+        <p class="muted">I focus on building accessible, fast experiences on the web. I enjoy turning complex problems into simple, beautiful interfaces. When I'm not coding you'll find me sketching, hiking, or reading about product design.</p>
+        <div style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn" href="/resume.pdf" download>Download CV</a>
+          <a class="btn" href="mailto:you@example.com?subject=Inquiry">Hire me</a>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact</h2>
+        <p class="muted">Prefer email — but I respond to polite messages on social too.</p>
+        <form action="mailto:you@example.com" method="post" enctype="text/plain" style="margin-top:12px;display:grid;gap:8px">
+          <input name="name" placeholder="Your name" style="padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)" required>
+          <input name="subject" placeholder="Subject" style="padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)" required>
+          <textarea name="message" rows="4" placeholder="Message" style="padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)" required></textarea>
+          <div style="display:flex;gap:8px">
+            <button type="submit" class="btn primary">Send</button>
+            <button type="reset" class="btn">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <footer>
+        © <span id="year"></span> Your Name — Built with minimalism and care.
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // small JS: update year, simple keyboard-friendly skip-to-top
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // progressive enhancement: enable keyboard-friendly focus for brand link
+    document.querySelectorAll('a,button,input,textarea').forEach(el => {
+      el.addEventListener('keydown', e => {
+        if(e.key === 'Enter' && el.tagName === 'A') el.click();
+      });
+    });
+  </script>
+</body>
+</html>
