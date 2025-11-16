@@ -40,27 +40,6 @@
       localStorage.setItem('theme', theme);
     });
     
-    // Lazy loading for images
-    const lazyImages = document.querySelectorAll('img.lazy');
-    
-    const lazyLoad = () => {
-      lazyImages.forEach(img => {
-        if (img.getBoundingClientRect().top < window.innerHeight && img.getBoundingClientRect().bottom > 0) {
-          if (img.dataset.src) {
-            img.src = img.dataset.src;
-            img.classList.add('loaded');
-          }
-        }
-      });
-    };
-    
-    // Initial load
-    lazyLoad();
-    
-    // Load images on scroll
-    window.addEventListener('scroll', lazyLoad);
-    window.addEventListener('resize', lazyLoad);
-    
     // Form submission handling
     const contactForm = document.getElementById('contactForm');
     contactForm.addEventListener('submit', (e) => {
@@ -78,11 +57,4 @@
       
       // Reset form
       contactForm.reset();
-    });
-    
-    // Performance optimization - debounce scroll events
-    let scrollTimeout;
-    window.addEventListener('scroll', () => {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(lazyLoad, 100);
     });
