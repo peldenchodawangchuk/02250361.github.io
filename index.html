@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name — Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>  <style>
+  <title>Pelden Choda Wangchuk — Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
     :root {
       --bg: #fff;
       --card: #f7f7f8;
@@ -13,6 +16,14 @@
       --accent: #0ea5a4;
       --radius: 12px;
       font-family: Inter, system-ui, sans-serif;
+    }
+    
+    [data-theme="dark"] {
+      --bg: #0b0f12;
+      --card: #071018;
+      --text: #e6eef6;
+      --muted: #94a3b8;
+      --accent: #2dd4bf;
     }
     
     @media (prefers-color-scheme: dark) {
@@ -25,21 +36,29 @@
       }
     }
     
-    * { box-sizing: border-box; margin: 0; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+    }
+    
     body {
       background: var(--bg);
       color: var(--text);
-      padding: 32px 16px;
+      padding: 24px 16px;
       line-height: 1.5;
       max-width: 960px;
       margin: 0 auto;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
     
+    /* Header & Navigation */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 16px;
     }
     
     .brand {
@@ -59,19 +78,51 @@
       place-items: center;
       color: var(--bg);
       font-weight: 700;
+      overflow: hidden;
+      flex-shrink: 0;
     }
     
-    nav { display: flex; gap: 16px; }
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    nav { 
+      display: flex; 
+      gap: 12px; 
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    
     a.btn {
       padding: 10px 14px;
       border-radius: 10px;
       text-decoration: none;
       font-weight: 600;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      display: inline-block;
     }
     
-    .primary { background: var(--accent); color: var(--bg); }
-    .ghost { color: var(--muted); }
+    a.btn:hover, button.btn:hover {
+      transform: translateY(-2px);
+    }
     
+    .primary { 
+      background: var(--accent); 
+      color: var(--bg); 
+    }
+    
+    .ghost { 
+      color: var(--muted); 
+    }
+    
+    .ghost:hover {
+      background: var(--card);
+    }
+    
+    /* Hero Section */
     .hero {
       display: grid;
       grid-template-columns: 1fr 320px;
@@ -79,23 +130,38 @@
       margin-bottom: 40px;
     }
     
-    @media (max-width: 880px) {
-      .hero { grid-template-columns: 1fr; }
+    .intro { 
+      padding: 0; 
     }
     
-    .intro { padding: 24px; }
-    h1 { font-size: 32px; margin-bottom: 8px; }
-    .lead { color: var(--muted); margin-bottom: 18px; }
+    h1 { 
+      font-size: clamp(28px, 5vw, 32px);
+      margin-bottom: 8px; 
+    }
     
-    .meta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .lead { 
+      color: var(--muted); 
+      margin-bottom: 18px; 
+      font-size: clamp(16px, 2.5vw, 18px);
+    }
+    
+    .meta { 
+      display: flex; 
+      gap: 12px; 
+      flex-wrap: wrap; 
+      margin-bottom: 24px;
+    }
+    
     .chip {
       background: var(--card);
       padding: 8px 12px;
       border-radius: 999px;
       font-weight: 600;
       color: var(--muted);
+      font-size: 14px;
     }
     
+    /* Photo Card */
     .photo-card {
       background: var(--card);
       border-radius: var(--radius);
@@ -115,63 +181,301 @@
       place-items: center;
       font-weight: 700;
       color: var(--muted);
+      overflow: hidden;
     }
     
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Projects Section */
     .projects {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 18px;
       margin-top: 20px;
-    }
-    
-    @media (max-width: 680px) {
-      .projects { grid-template-columns: 1fr; }
     }
     
     .card {
       background: var(--card);
       padding: 18px;
       border-radius: var(--radius);
+      transition: transform 0.2s ease;
     }
     
-    .card h3 { margin-bottom: 8px; }
-    .card p { color: var(--muted); }
+    .card:hover {
+      transform: translateY(-4px);
+    }
     
-    .stack { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
-    .muted { color: var(--muted); }
+    .card h3 { 
+      margin-bottom: 8px; 
+      font-size: 18px;
+    }
     
+    .card p { 
+      color: var(--muted); 
+      font-size: 15px;
+    }
+    
+    .stack { 
+      display: flex; 
+      gap: 12px; 
+      flex-wrap: wrap; 
+      margin-top: 12px; 
+    }
+    
+    .muted { 
+      color: var(--muted); 
+    }
+    
+    /* Footer */
     footer {
       margin-top: 40px;
       color: var(--muted);
       font-size: 13px;
       text-align: center;
+      padding: 20px 0;
     }
     
+    /* Form Elements */
     input, textarea {
-      padding: 10px;
+      padding: 12px;
       border-radius: 8px;
       border: 1px solid rgba(0,0,0,0.06);
       width: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: inherit;
+      transition: border-color 0.2s ease;
     }
     
-    form { margin-top: 12px; display: grid; gap: 8px; }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    
+    form { 
+      margin-top: 12px; 
+      display: grid; 
+      gap: 12px; 
+    }
+    
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    
+    /* Theme Toggle */
+    .theme-toggle {
+      background: var(--card);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .theme-toggle:hover {
+      transform: rotate(15deg);
+    }
+    
+    .theme-toggle svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--text);
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      flex-direction: column;
+      gap: 4px;
+    }
+    
+    .mobile-menu-btn span {
+      width: 24px;
+      height: 3px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+    
+    /* Lazy loading */
+    .lazy {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .lazy.loaded {
+      opacity: 1;
+    }
+    
+    /* Mobile-specific improvements */
+    @media (max-width: 880px) {
+      .hero { 
+        grid-template-columns: 1fr; 
+        gap: 24px;
+      }
+      
+      .photo-card {
+        order: -1;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+    
+    @media (max-width: 680px) {
+      .projects { 
+        grid-template-columns: 1fr; 
+      }
+      
+      header {
+        flex-direction: row;
+        align-items: center;
+      }
+      
+      .mobile-menu-btn {
+        display: flex;
+      }
+      
+      nav {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--bg);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 100;
+      }
+      
+      nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      nav a {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      body {
+        padding: 16px 12px;
+      }
+      
+      header {
+        margin-bottom: 20px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      .lead {
+        font-size: 16px;
+      }
+      
+      .photo-card {
+        padding: 16px;
+      }
+      
+      .photo {
+        width: 140px;
+        height: 140px;
+      }
+      
+      .card {
+        padding: 16px;
+      }
+      
+      .chip {
+        font-size: 12px;
+        padding: 6px 10px;
+      }
+      
+      .meta {
+        gap: 8px;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <a class="brand" href="#">
       <div class="logo">
-        <img src="pfp.jpg" alt="">
+        <img src="123.jpg" alt="Pelden Choda Wangchuk" class="lazy" data-src="123.jpg">
       </div>
       <div>
-        <div style="font-weight:700">Your Name</div>
+        <div style="font-weight:700">Pelden Choda Wangchuk</div>
         <div class="muted" style="font-size:12px">Designer & Developer</div>
       </div>
     </a>
-    <nav>
-      <a class="ghost" href="#projects">Projects</a>
-      <a class="ghost" href="#about">About</a>
+    
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <nav id="mainNav">
+      <a class="ghost btn" href="#projects">Projects</a>
+      <a class="ghost btn" href="#about">About</a>
       <a class="btn primary" href="mailto:you@example.com">Contact</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24">
+          <path d="M12,18C8.7,18,6,15.3,6,12C6,8.7,8.7,6,12,6C15.3,6,18,8.7,18,12C18,15.3,15.3,18,12,18zM12,8C9.8,8,8,9.8,8,12C8,14.2,9.8,16,12,16C14.2,16,16,14.2,16,12C16,9.8,14.2,8,12,8z"/>
+          <path d="M12,4C12.6,4,13,3.6,13,3V1C13,0.4,12.6,0,12,0S11,0.4,11,1V3C11,3.6,11.4,4,12,4z"/>
+          <path d="M12,20c-0.6,0-1,0.4-1,1v2c0,0.6,0.4,1,1,1s1-0.4,1-1v-2C13,20.4,12.6,20,12,20z"/>
+          <path d="M5.6,6.6C5.2,7,4.6,7,4.2,6.6L2.8,5.2C2.4,4.8,2.4,4.2,2.8,3.8S3.8,3.4,4.2,3.8l1.4,1.4C6,5.2,6,5.8,5.6,6.6z"/>
+          <path d="M19.8,20.2l-1.4-1.4c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l1.4,1.4c0.4,0.4,0.4,1,0,1.4S20.2,20.6,19.8,20.2z"/>
+          <path d="M3,13H1c-0.6,0-1,0.4-1,1s0.4,1,1,1h2c0.6,0,1-0.4,1-1S3.6,13,3,13z"/>
+          <path d="M23,11h-2c-0.6,0-1,0.4-1,1s0.4,1,1,1h2c0.6,0,1-0.4,1-1S23.6,11,23,11z"/>
+          <path d="M4.2,20.2c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l1.4,1.4c0.4,0.4,0.4,1,0,1.4s-1,0.4-1.4,0L4.2,20.2z"/>
+          <path d="M18.4,6.6c0.4,0.4,1,0.4,1.4,0l1.4-1.4c0.4-0.4,0.4-1,0-1.4s-1-0.4-1.4,0l-1.4,1.4C18,5.2,18,5.8,18.4,6.6z"/>
+        </svg>
+      </button>
     </nav>
   </header>
 
@@ -231,7 +535,7 @@
 
       <aside class="photo-card">
         <div class="photo">
-          <img src="pfp.jpg" alt="">
+          <img src="123.jpg" alt="Pelden Choda Wangchuk" class="lazy" data-src="123.jpg">
         </div>
         <div style="text-align:center">
           <div style="font-weight:700 ">Pelden Choda Wangchuk</div>
@@ -239,15 +543,15 @@
         </div>
 
         <div style="margin-top:12px; display: flex; gap: 8px;">
-          <a class="btn" href="#about">About</a>
+          <a class="btn ghost" href="#about">About</a>
           <a class="btn primary" href="mailto:you@example.com">Email</a>
         </div>
 
         <div style="margin-top:12px; text-align:center">
           <div class="muted" style="font-size:13px">Or find me on</div>
           <div style="margin-top:8px; display:flex; gap:8px; justify-content:center">
-            <a class="ghost" href="#">GitHub</a>
-            <a class="ghost" href="#">LinkedIn</a>
+            <a class="ghost btn" href="#">GitHub</a>
+            <a class="ghost btn" href="#">LinkedIn</a>
           </div>
         </div>
       </aside>
@@ -257,33 +561,30 @@
       <h2>About</h2>
       <p class="muted">I focus on building accessible, fast experiences on the web. I enjoy turning complex problems into simple, beautiful interfaces.</p>
       <div style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap">
-        <a class="btn" href="/resume.pdf" download>Download CV</a>
-        <a class="btn" href="mailto:you@example.com">Hire me</a>
+        <a class="btn ghost" href="/resume.pdf" download>Download CV</a>
+        <a class="btn primary" href="mailto:you@example.com">Hire me</a>
       </div>
     </section>
 
     <section class="card">
       <h2>Contact</h2>
       <p class="muted">Prefer email — but I respond to polite messages on social too.</p>
-      <form action="mailto:you@example.com" method="post" enctype="text/plain">
+      <form id="contactForm" action="#" method="post">
         <input name="name" placeholder="Your name" required>
         <input name="subject" placeholder="Subject" required>
         <textarea name="message" rows="4" placeholder="Message" required></textarea>
         <div style="display:flex; gap:8px">
           <button type="submit" class="btn primary">Send</button>
-          <button type="reset" class="btn">Reset</button>
+          <button type="reset" class="btn ghost">Reset</button>
         </div>
       </form>
     </section>
 
     <footer>
-      © <span id="year"></span> Your Name — Built with minimalism and care.
+      © <span id="year"></span> Pelden Choda Wangchuk — Built with minimalism and care.
     </footer>
   </main>
 
-  <script>
-    // Simple script to update the year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script> src='script.js'</script>
 </body>
 </html>
